@@ -18,7 +18,7 @@ import LoadingState from '../components/LoadingState';
 import ErrorState from '../components/ErrorState';
 import EmptyState from '../components/EmptyState';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
     const isDark = useColorScheme() === 'dark';
     const theme = getTheme(isDark);
     const { user, logout } = useAuth();
@@ -26,9 +26,9 @@ const HomeScreen = () => {
 
     const handleProductPress = useCallback(
         (product) => {
-            Alert.alert("Info", "Detail Product");
+            navigation.navigate('Detail', { product });
         },
-        [],
+        [navigation],
     );
 
     const renderProduct = useCallback(

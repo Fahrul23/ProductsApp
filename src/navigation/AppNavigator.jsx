@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { getTheme } from '../theme/colors';
 import LoginScreen from '../screens/LoginScreen';
 import HomeScreen from '../screens/HomeScreen';
-
+import DetailScreen from '../screens/DetailScreen';
 import LoadingState from '../components/LoadingState';
 
 const Stack = createNativeStackNavigator();
@@ -53,7 +53,14 @@ const AppNavigator = () => {
                             component={HomeScreen}
                             options={{ headerShown: false }}
                         />
-
+                        <Stack.Screen
+                            name="Detail"
+                            component={DetailScreen}
+                            options={({ route }) => ({
+                                title: route.params?.product?.title || 'Detail Produk',
+                                headerBackTitle: 'Kembali',
+                            })}
+                        />
                     </>
                 ) : (
                     <Stack.Screen
